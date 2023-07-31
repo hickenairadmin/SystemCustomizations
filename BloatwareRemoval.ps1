@@ -45,7 +45,6 @@ $APPS = @(
 	'{286A9ADE-A581-43E8-AA85-6F5D58C7DC88}' #Dell Optimizer Core
 	'{2a8bafd6-22ae-4d0e-87a4-686b2a4a2ab0}' #Dell SupportAssist OS Recovery Plugin for Del
 	'{3E3B2B7F-B114-4EB0-B957-276A0FACC730}' #ExpressConnect Drivers & Services
-	'Dell.CommandUpdate.Universal' #Dell Command | Update for Windows Universal
 	'{5BC2B5AB-80DE-4E83-B8CF-426902051D0A}' #Realtek Card Reader
 	'{6250A087-31F9-47E2-A0EF-56ABF31B610E}' #Dell Core Services
 	'{A21A0E9A-A083-47C6-AEAA-695348A25779}' #Dell Digital Delivery Services
