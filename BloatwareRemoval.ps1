@@ -59,22 +59,31 @@ $APPS = @(
 	'{A21A0E9A-A083-47C6-AEAA-695348A25779}' #Dell Digital Delivery Services
 	'{A8DFE386-5055-48F6-95C9-8DF312812625}' #Dell Power Manager Service
 	'{D5BD7604-A1C8-47DC-8C0A-70F9BED27245}' #Dell SupportAssist
-	'Dell.CommandUpdate.Universal' #Dell Command Update (Universal Windows Platform)
 )
 
+# Communicate with the user
+Write-Host -NoNewline "Checking for WinGet Now ..."
 # Make sure that winget is installed
 if (!(Get-Command winget -ErrorAction SilentlyContinue)) {
+	# Download and install winget
+	Write-Host " not found, so we are installing WinGet Now ..."
 	Add-AppxPackage -RegisterByFamilyName -MainPackage Microsoft.DesktopAppInstaller_8wekyb3d8bbwe
+} else {
+	Write-Host " found."
 }
 
+# Communicate with the user
+Write-Host "Checking for Bloatware Now ..."
 # Loop through the apps and uninstall them
 foreach ($APP in $APPS){
 	# Check if the app is installed
+	Write-Host -NoNewline "`tChecking for `'$APP`' now ..."
 	if (winget list --query $APP | Out-Null){
 		# Uninstall the app
+		Write-Host " found!"
 		winget uninstall --id $APP --silent --force --purge --disable-interactivity
+	} else {
+		Write-Host " not found."
 	}
 }
-
-# Install the latest version of the Dell Command Update (Universal Windows Platform)
-winget install --id 'Dell.CommandUpdate.Universal' --silent --force --disable-interactivity
+Write-Host "Bloatware Removal Complete!"
