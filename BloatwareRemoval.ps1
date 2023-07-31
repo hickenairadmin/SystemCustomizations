@@ -55,3 +55,6 @@ $APPS = @(
 foreach ($APP in $APPS){
 	winget uninstall --id $APP --silent --force --purge --disable-interactivity
 }
+
+# Update Dell Command Update (Universal Windows Platform)
+winget upgrade --id 'Dell.CommandUpdate.Universal' --silent --force --disable-interactivity
