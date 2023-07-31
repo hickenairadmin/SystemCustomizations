@@ -17,6 +17,10 @@ $APPS = @(
 	'Microsoft.MicrosoftStickyNotes_8wekyb3d8bbwe' #Microsoft Sticky Notes
 	'Microsoft.MixedReality.Portal_8wekyb3d8bbwe' #Mixed Reality Portal
 	'Microsoft.Office.OneNote_8wekyb3d8bbwe' #OneNote for Windows 10
+	'OneNoteFreeRetail - en-us' #OneNote DELL Bloatware
+	'OneNoteFreeRetail - es-es' #OneNote DELL Bloatware
+	'OneNoteFreeRetail - fr-fr' #OneNote DELL Bloatware
+	'OneNoteFreeRetail - pt-br' #OneNote DELL Bloatware
 	'Microsoft.Paint_8wekyb3d8bbwe' #Paint
 	'Microsoft.People_8wekyb3d8bbwe' #Microsoft People
 	'Microsoft.PowerAutomateDesktop_8wekyb3d8bbwe' #Power Automate
@@ -40,6 +44,7 @@ $APPS = @(
 	'O365HomePremRetail - en-us' #Microsoft 365 - en-us
 	'O365HomePremRetail - es-es' #Microsoft 365 - es-es
 	'O365HomePremRetail - fr-fr' #Microsoft 365 - fr-fr
+	'O365HomePremRetail - pt-br' #Microsoft 365 - pt-br
 	'microsoft.windowscommunicationsapps_8wekyb3d8bbwe' #Mail and Calendar
 	'{17268bdc-8263-4bc2-a5e2-7de6ce0122bd}' #Dell SupportAssist Remediation
 	'{286A9ADE-A581-43E8-AA85-6F5D58C7DC88}' #Dell Optimizer Core
@@ -52,8 +57,18 @@ $APPS = @(
 	'{D5BD7604-A1C8-47DC-8C0A-70F9BED27245}' #Dell SupportAssist
 )
 
+# Make sure that winget is installed
+if (!(Get-Command winget -ErrorAction SilentlyContinue)) {
+	Add-AppxPackage -RegisterByFamilyName -MainPackage Microsoft.DesktopAppInstaller_8wekyb3d8bbwe
+}
+
+# Loop through the apps and uninstall them
 foreach ($APP in $APPS){
-	winget uninstall --id $APP --silent --force --purge --disable-interactivity
+	# Check if the app is installed
+	if (winget list --query --id $APP){
+		# Uninstall the app
+		winget uninstall --id $APP --silent --force --purge --disable-interactivity
+	}
 }
 
 # Update Dell Command Update (Universal Windows Platform)
