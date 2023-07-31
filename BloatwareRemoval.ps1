@@ -1,3 +1,7 @@
+# Tested successfully on Windows 11 Enterprise
+# DELL 5430 Latitude
+
+# This script will remove the following apps:
 $APPS = @(
 	'Dell Peripheral Manager' #Dell Peripheral Manager
 	'DellInc.DellCommandUpdate_htrsf667h5kn2' #Dell Command | Update
