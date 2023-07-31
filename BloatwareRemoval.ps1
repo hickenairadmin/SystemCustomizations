@@ -10,6 +10,7 @@ $APPS = @(
 	'DellInc.DellPowerManager_htrsf667h5kn2' #Dell Power Manager
 	'DellInc.DellSupportAssistforPCs_htrsf667h5kn2' #Dell SupportAssist for Home PCs
 	'DellInc.PartnerPromo_htrsf667h5kn2' #Partner Promo
+	'9P1J8S7CCWWT' #Microsoft Clipchamp
 	'Microsoft.BingNews_8wekyb3d8bbwe' #Microsoft News
 	'Microsoft.BingWeather_8wekyb3d8bbwe' #MSN Weather
 	'Microsoft.GamingApp_8wekyb3d8bbwe' #Xbox
