@@ -79,10 +79,10 @@ Write-Host "Checking for Bloatware Now ..."
 foreach ($APP in $APPS){
 	# Check if the app is installed
 	Write-Host -NoNewline "`tChecking for `'$APP`' now ..."
-	if (winget list --query $APP | Out-Null){
+	if (winget list --query $APP){
 		# Uninstall the app
 		Write-Host " found!"
-		winget uninstall --id $APP --silent --force --purge --disable-interactivity
+		winget uninstall --id $APP --force --purge
 	} else {
 		Write-Host " not found."
 	}
